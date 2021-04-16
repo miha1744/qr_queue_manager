@@ -14,7 +14,6 @@ Pillow = "*"
 django-bootstrap-datepicker-plus = "*"
 bootstrap4 = "*"
 django-widget-tweaks = "*"
-
 [dev-packages]
 
 [requires]

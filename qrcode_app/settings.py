@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'crispy_forms',
     'bootstrap4',
-    'jquery',
 ]
 
 REST_FRAMEWORK = {
