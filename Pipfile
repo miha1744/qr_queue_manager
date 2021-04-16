@@ -1,0 +1,20 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+djangorestframework = "*"
+django-crispy-forms = "*"
+gunicorn = "*"
+django-heroku = "*"
+Pillow = "*"
+django-bootstrap-datepicker-plus = "*"
+bootstrap4 = "*"
+jquery = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"
