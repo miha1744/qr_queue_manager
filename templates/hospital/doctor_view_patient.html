@@ -1,0 +1,97 @@
+{% extends 'hospital/doctor_base.html' %}
+{% block content %}
+{%load static%}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+  </style>
+</head>
+{% for p in patients %}
+{% if p.membershipId == 0 %}
+{% if  p.status == 0 %}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-12 col-md-4">
+                        <img src="{% static p.patient.profile_pic.url %}" alt="" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <h4>
+                            {{p.patient.get_name}}</h4>
+
+                        <p>
+                            <i class="glyphicon glyphicon-phone"></i>{{p.patient.mobile}}
+                            <br />
+                            <i class="glyphicon glyphicon-globe"></i><a href="http://www.jquery2dotnet.com">{{p.patient.address}}</a>
+                            <br />
+                            <i class="glyphicon glyphicon-gift"></i>June 02, 1988</p>
+                        <!-- Split button -->
+                        <td><a class="btn btn-danger btn-xs" href="{% url 'end-patient-from-queue' p.membershipId  %}">Завершить прием<span class="glyphicon glyphicon-trash"></span></a></td>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endif %}
+{% endfor %}
+
+
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h6 class="panel-title">Список пациентов в очереди</h6>
+    </div>
+    <table class="table table-hover" id="dev-table">
+      <thead>
+        <tr>
+          <th>ФИО</th>
+          <th>Аватар</th>
+          <th>Дата и время попадания в очередь</th>
+          <th>Номер телефона</th>
+          <th>Address</th>
+          <th>Номер в очереди</th>
+          <th>Поднять</th>
+          <th>Опустить</th>
+          <th>Удалить</th>
+
+        </tr>
+      </thead>
+      {% for p in patients %}
+      <tr>
+        {% if p.membershipId >= 0 %}
+        <td> {{p.patient.get_name}}</td>
+        <td> <img src="{% static p.patient.profile_pic.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
+        <td>{{p.date_joined}}</td>
+        <td>{{p.patient.mobile}}</td>
+        <td>{{p.patient.address}}</td>
+        <td align="center">{{p.membershipId}}</td>
+        <td><a class="btn btn-primary btn-xs" href="{% url 'up-patient-from-queue' p.membershipId  %}"><span class="glyphicon glyphicon-arrow-up"></span></a></td>
+        <td><a class="btn btn-primary btn-xs" href="{% url 'down-patient-from-queue' p.membershipId  %}"><span class="glyphicon glyphicon-arrow-down"></span></a></td>
+        <td><a class="btn btn-danger btn-xs" href="{% url 'delete-patient-from-queue' p.membershipId  %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+{% endblock content %}
