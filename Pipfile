@@ -14,6 +14,7 @@ Pillow = "*"
 django-bootstrap-datepicker-plus = "*"
 bootstrap4 = "*"
 django-widget-tweaks = "*"
+qrcode = "*"
 [dev-packages]
 
 [requires]
