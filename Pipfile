@@ -4,6 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+
 django = "*"
 djangorestframework = "*"
 django-crispy-forms = "*"
@@ -12,7 +13,7 @@ django-heroku = "*"
 Pillow = "*"
 django-bootstrap-datepicker-plus = "*"
 bootstrap4 = "*"
-jquery = "*"
+
 
 [dev-packages]
 
