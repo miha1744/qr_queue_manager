@@ -502,20 +502,20 @@ def discharge_patient_view(request,pk):
 
 #--------------for discharge patient bill (pdf) download and printing
 import io
-from xhtml2pdf import pisa
+# from xhtml2pdf import pisa
 from django.template.loader import get_template
 from django.template import Context
 from django.http import HttpResponse
 
 
-def render_to_pdf(template_src, context_dict):
-    template = get_template(template_src)
-    html  = template.render(context_dict)
-    result = io.BytesIO()
-    pdf = pisa.pisaDocument(io.BytesIO(html.encode("ISO-8859-1")), result)
-    if not pdf.err:
-        return HttpResponse(result.getvalue(), content_type='application/pdf')
-    return
+# def render_to_pdf(template_src, context_dict):
+#     template = get_template(template_src)
+#     html  = template.render(context_dict)
+#     result = io.BytesIO()
+#     pdf = pisa.pisaDocument(io.BytesIO(html.encode("ISO-8859-1")), result)
+#     if not pdf.err:
+#         return HttpResponse(result.getvalue(), content_type='application/pdf')
+#     return
 
 
 
