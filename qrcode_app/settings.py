@@ -43,14 +43,11 @@ INSTALLED_APPS = [
     #Rest_Framework
     'rest_framework',
     'rest_framework.authtoken',
-
-
-
+    'bootstrap4',
     #Front-end libs
     'bootstrap_datepicker_plus',
     'widget_tweaks',
     'crispy_forms',
-    'bootstrap4',
 ]
 
 REST_FRAMEWORK = {
