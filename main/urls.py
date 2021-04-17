@@ -11,10 +11,7 @@ from rest_framework.authtoken import views as auth_views
 #-------------FOR ADMIN RELATED URLS
 urlpatterns = [
     path('',views.home_view, name=''),
-
     path('contactus', views.contactus_view),
-
-
     path('adminclick', views.adminclick_view),
     path('doctorclick', views.doctorclick_view),
     path('patientclick', views.patientclick_view),
