@@ -7,25 +7,10 @@ from django.contrib.auth.views import LoginView,LogoutView
 
 from rest_framework.authtoken import views as auth_views
 
-api_urls = [
-    path("api/v1/register", views.RegisterAPIView.as_view(), name="register"),
-    path("api-token-auth", auth_views.obtain_auth_token, name="api-token-auth"),
-    path("api/v1/doctor-list", views.GetDoctorsListAPIView.as_view(), name="DoctorsList"),
-    path("api/v1/doctorqueue-list", views.GetDoctorqueueListAPIView.as_view(), name="DoctorqueueList"),
-    path("api/v1/patient-list", views.GetAllPatients.as_view(), name="AllPatients"),
-    path("api/v1/stay_queue", views.CreateMembershipAPIView.as_view(), name="register"),
-    path("api/v1/current_user_queue", views.GetMembership.as_view(), name = "current_user_state"),
-
-]
-
-
-
 
 #-------------FOR ADMIN RELATED URLS
 urlpatterns = [
-    path('admin', admin.site.urls),
-    path('',views.home_view,name=''),
-
+    path('',views.home_view, name=''),
 
     path('contactus', views.contactus_view),
 
@@ -114,6 +99,16 @@ urlpatterns +=[
     path('patient-view-appointment', views.patient_view_appointment_view,name='patient-view-appointment'),
     path('patient-discharge', views.patient_discharge_view,name='patient-discharge'),
 
+]
+
+api_urls = [
+    path("api/v1/register", views.RegisterAPIView.as_view(), name="register"),
+    path("api-token-auth", auth_views.obtain_auth_token, name="api-token-auth"),
+    path("api/v1/doctor-list", views.GetDoctorsListAPIView.as_view(), name="DoctorsList"),
+    path("api/v1/doctorqueue-list", views.GetDoctorqueueListAPIView.as_view(), name="DoctorqueueList"),
+    path("api/v1/patient-list", views.GetAllPatients.as_view(), name="AllPatients"),
+    path("api/v1/stay_queue", views.CreateMembershipAPIView.as_view(), name="register"),
+    path("api/v1/current_user_queue", views.GetMembership.as_view(), name = "current_user_state"),
 ]
 
 urlpatterns+=api_urls
